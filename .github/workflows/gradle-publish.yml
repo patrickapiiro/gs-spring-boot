@@ -14,22 +14,22 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Set up JDK 11
-      uses: actions/setup-java@v2
-      with:
-        java-version: '11'
-        distribution: 'temurin'
-    - name: Build with Gradle
-      run: gradle build -b complete/build.gradle
-    - name: Upload artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: gs-spring
-        path: '**/**.jar'
+  # build:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: Set up JDK 11
+  #     uses: actions/setup-java@v2
+  #     with:
+  #       java-version: '11'
+  #       distribution: 'temurin'
+  #   - name: Build with Gradle
+  #     run: gradle build -b complete/build.gradle
+  #   - name: Upload artifact
+  #     uses: actions/upload-artifact@v2
+  #     with:
+  #       name: gs-spring
+  #       path: '**/**.jar'
   apiiro:
     needs: build
     runs-on: ubuntu-latest
@@ -41,6 +41,6 @@ jobs:
           --data '{ "buildId": "${{ github.run_id }}","sourceCommit": "${{ github.sha }}","repositoryKey": '\"$REPOSITORY_KEY\"',"applicationName": '\"$APPLICATION_NAME\"',"buildPageUrl": '\"$BUILD_PAGE_URL\"' }'
       env:
         BUILD_PAGE_URL: '${{ github.server_url }}/${{ github.repository	 }}/actions/runs/${{ github.run_id }}'
-        APPLICATION_NAME: 'Spring Product'
+        APPLICATION_NAME: Spring Product
         APIIRO_URL: https://app.apiiro.com/rest-api/v1/cicd/builds
         REPOSITORY_KEY: https___github_com_patrickapiiro__gs-spring-boot__gs-spring-boot
