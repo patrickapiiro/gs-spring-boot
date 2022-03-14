@@ -31,7 +31,7 @@ jobs:
   #       name: gs-spring
   #       path: '**/**.jar'
   apiiro:
-    needs: build
+    #needs: build
     runs-on: ubuntu-latest
     steps:
     - run: |
