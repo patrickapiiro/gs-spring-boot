@@ -41,6 +41,6 @@ jobs:
           --data '{ "buildId": "${{ github.run_id }}","sourceCommit": "${{ github.sha }}","repositoryKey": '\"$REPOSITORY_KEY\"',"applicationName": '\"$APPLICATION_NAME\"',"buildPageUrl": '\"$BUILD_PAGE_URL\"' }'
       env:
         BUILD_PAGE_URL: '${{ github.server_url }}/${{ github.repository	 }}/actions/runs/${{ github.run_id }}'
-        APPLICATION_NAME: Spring Product
+        APPLICATION_NAME: Spring_Product
         APIIRO_URL: https://app.apiiro.com/rest-api/v1/cicd/builds
         REPOSITORY_KEY: https___github_com_patrickapiiro__gs-spring-boot__gs-spring-boot
